@@ -1,11 +1,25 @@
 import API from '../base'
-import { IOrder } from './interfaces'
+import { IOrderProduct } from './interfaces'
 
-export const getOrCreateOrder = async (params: {
+export const createOrderProduct = async (params: {
   userId: number
-}): Promise<IOrder> => {
+}): Promise<IOrderProduct> => {
   try {
-    const { data } = await API.post<IOrder>('/order', { params })
+    const { data } = await API.post<IOrderProduct>('/order', { params })
+
+    return data
+  } catch (error) {
+    console.error('error ->>', error)
+    throw new Error('')
+  }
+}
+
+export const patchOrderProduct = async (params: {
+  id: number
+  quantity: number
+}): Promise<IOrderProduct> => {
+  try {
+    const { data } = await API.patch<IOrderProduct>('/order', { params })
 
     return data
   } catch (error) {

@@ -1,16 +1,22 @@
+import { IOrder } from '@/services/order/interfaces'
 import { createContext, useState } from 'react'
 
-const OrderContext = createContext({})
+export interface UserContextType {
+  order: IOrder
+  setOrder: (data: IOrder) => void
+}
 
-interface IOrderContext {
+const OrderContext = createContext<UserContextType>({} as UserContextType)
+
+interface OrderContextProps {
   children: React.ReactNode
 }
 
-const Order: React.FC<IOrderContext> = ({ children }) => {
-  const [user, setOrder] = useState()
+const Order: React.FC<OrderContextProps> = ({ children }) => {
+  const [order, setOrder] = useState<IOrder>({} as IOrder)
 
   return (
-    <OrderContext.Provider value={{ user, setOrder }}>
+    <OrderContext.Provider value={{ order, setOrder }}>
       {children}
     </OrderContext.Provider>
   )

@@ -1,7 +1,12 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
-const Card = ({ product }) => {
+import { IProduct } from '@/services/product/interfaces'
+
+interface CardProps {
+  product: IProduct
+}
+
+const Card: React.FC<CardProps> = ({ product }) => {
   const valueWithoutDiscount = product.price + (product.discount || 0)
   const percentDiscount = product.discount
     ? Math.round(product.price / product.discount)

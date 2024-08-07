@@ -6,7 +6,7 @@ export const getOrCreateUser = async (params: {
   email: string
 }): Promise<IUser> => {
   try {
-    const { data } = await API.post<IUser>('/user', { params })
+    const { data } = await API.post<IUser>('/user', params)
 
     return data
   } catch (error) {

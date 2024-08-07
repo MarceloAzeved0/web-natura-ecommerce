@@ -1,6 +1,15 @@
 import Card from '@/components/Card'
+import { IGetProductsResponse } from '@/services/product/interfaces'
 
-const ProductsSection = ({ products, total, handleSearch }) => {
+interface ProductsSectionProps extends IGetProductsResponse {
+  handleSearch: () => void
+}
+
+const ProductsSection: React.FC<ProductsSectionProps> = ({
+  products,
+  total,
+  handleSearch,
+}) => {
   return (
     <section className='center-items container flex-col justify-center'>
       <div className='flex justify-center'>
@@ -18,6 +27,7 @@ const ProductsSection = ({ products, total, handleSearch }) => {
 
       {total > products.length && (
         <button
+          type='button'
           onClick={handleSearch}
           className='my-4 rounded-full border border-black bg-white px-6 py-3 hover:bg-slate-100'
         >

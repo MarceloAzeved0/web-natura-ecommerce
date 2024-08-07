@@ -15,7 +15,7 @@ const NextBreadcrumb = () => {
         <li>
           <Link href={'/'}>Inicio</Link>
         </li>
-        <span>/</span>
+        <span className='p-1'>/</span>
         {pathNames.map((link, index) => {
           const href = `/${pathNames.slice(0, index + 1).join('/')}`
           const itemLink = link[0].toUpperCase() + link.slice(1, link.length)
@@ -24,7 +24,7 @@ const NextBreadcrumb = () => {
               <li>
                 <Link href={href}>{itemLink}</Link>
               </li>
-              <span>/</span>
+              <span className='p-1'>/</span>
             </React.Fragment>
           )
         })}

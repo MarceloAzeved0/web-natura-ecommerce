@@ -3,8 +3,13 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from '@heroicons/react/outline'
+import Link from 'next/link'
+import UserModal from './Modals/User'
+import { useState } from 'react'
 
-const Header = ({ productSearch, setProductSearch }) => {
+const Header = () => {
+  const [openModal, setOpenModal] = useState<boolean>(false)
+
   return (
     <header className='flex w-full justify-center border-b'>
       <div className='container flex w-full items-center justify-between py-3'>
@@ -14,8 +19,6 @@ const Header = ({ productSearch, setProductSearch }) => {
 
         <div className='relative mx-20 w-full'>
           <input
-            value={productSearch}
-            onChange={setProductSearch}
             type='text'
             placeholder='O que está buscando hoje?'
             className='w-full rounded-full bg-gray-100 py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500'
@@ -23,14 +26,20 @@ const Header = ({ productSearch, setProductSearch }) => {
           <SearchIcon className='absolute left-3 top-2 h-5 w-5 text-gray-500' />
         </div>
 
-        <div className='flex items-center space-x-4'>
-          <a href='/cart' className='text-gray-800 hover:text-gray-600'>
+        <div className='flex items-center'>
+          <Link href='/carrinho' className='text-gray-800 hover:text-gray-600'>
             <ShoppingCartIcon className='h-6 w-6' />
-          </a>
+          </Link>
 
-          <a href='/account' className='text-gray-800 hover:text-gray-600'>
+          <button
+            type='button'
+            onClick={() => setOpenModal(true)}
+            className='text-gray-800 hover:text-gray-600'
+          >
             <UserIcon className='h-6 w-6' />
-          </a>
+          </button>
+
+          <UserModal open={openModal} setClosed={() => setOpenModal(false)} />
         </div>
       </div>
     </header>
