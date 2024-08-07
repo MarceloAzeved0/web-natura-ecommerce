@@ -1,19 +1,19 @@
 import { createContext, useState } from 'react'
 
-const UserContext = createContext({})
+const OrderContext = createContext({})
 
-interface IUserContext {
+interface IOrderContext {
   children: React.ReactNode
 }
 
-const User: React.FC<IUserContext> = ({ children }) => {
-  const [user, setUser] = useState()
+const Order: React.FC<IOrderContext> = ({ children }) => {
+  const [user, setOrder] = useState()
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <OrderContext.Provider value={{ user, setOrder }}>
       {children}
-    </UserContext.Provider>
+    </OrderContext.Provider>
   )
 }
 
-export default User
+export default Order

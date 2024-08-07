@@ -1,7 +1,7 @@
 import Banner from '@/components/Home/Banner'
 import ProductsSection from '@/components/Home/ProductsSection'
 
-import { getProducts } from '@/services/product/services'
+import { getProducts } from '@/services/product'
 import { IProduct } from '@/services/product/interfaces'
 import { useState, useEffect } from 'react'
 
