@@ -1,5 +1,7 @@
 import Card from '@/components/Card'
 import { IGetProductsResponse } from '@/services/product/interfaces'
+import { useContext } from 'react'
+import { OrderContext } from '@/contexts/order'
 
 interface ProductsSectionProps extends IGetProductsResponse {
   handleSearch: () => void
@@ -10,6 +12,8 @@ const ProductsSection: React.FC<ProductsSectionProps> = ({
   total,
   handleSearch,
 }) => {
+  const { addProduct } = useContext(OrderContext)
+
   return (
     <section className='center-items container flex-col justify-center'>
       <div className='flex justify-center'>
@@ -21,7 +25,11 @@ const ProductsSection: React.FC<ProductsSectionProps> = ({
       <div className='flex w-full flex-col items-center justify-between gap-4 lg:flex-row lg:flex-wrap'>
         {products &&
           products.map((product) => (
-            <Card key={product.id} product={product} />
+            <Card
+              key={product.id}
+              product={product}
+              action={() => addProduct(product)}
+            />
           ))}
       </div>
 

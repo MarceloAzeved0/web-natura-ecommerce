@@ -12,7 +12,7 @@ const NextBreadcrumb = () => {
   return (
     <div className='container'>
       <ul className='flex w-full flex-row items-center p-4'>
-        <li>
+        <li className={`${pathNames.length === 0 ? 'text-orange-500' : ''}`}>
           <Link href={'/'}>Inicio</Link>
         </li>
         <span className='p-1'>/</span>
@@ -21,7 +21,9 @@ const NextBreadcrumb = () => {
           const itemLink = link[0].toUpperCase() + link.slice(1, link.length)
           return (
             <React.Fragment key={index}>
-              <li>
+              <li
+                className={`${pathNames.length === index + 1 ? 'text-orange-500' : ''}`}
+              >
                 <Link href={href}>{itemLink}</Link>
               </li>
               <span className='p-1'>/</span>

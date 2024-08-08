@@ -4,9 +4,10 @@ import { IProduct } from '@/services/product/interfaces'
 
 interface CardProps {
   product: IProduct
+  action: () => void
 }
 
-const Card: React.FC<CardProps> = ({ product }) => {
+const Card: React.FC<CardProps> = ({ product, action }) => {
   const valueWithoutDiscount = product.price + (product.discount || 0)
   const percentDiscount = product.discount
     ? Math.round(product.price / product.discount)
@@ -49,7 +50,10 @@ const Card: React.FC<CardProps> = ({ product }) => {
           ''
         )}
       </div>
-      <button className='rounded-full border border-none bg-orange-500 px-6 py-3 text-white hover:opacity-30'>
+      <button
+        onClick={action}
+        className='rounded-full border border-none bg-orange-500 px-6 py-3 text-white hover:opacity-30'
+      >
         Adicionar
       </button>
     </article>

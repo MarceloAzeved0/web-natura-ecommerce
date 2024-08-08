@@ -1,4 +1,3 @@
-import Breadcrumb from '@/components/Breadcrumb'
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
 
@@ -15,7 +14,6 @@ export default function RootLayout({
   return (
     <div className='flex flex-col items-center'>
       <Header />
-      <Breadcrumb />
       {children}
     </div>
   )

@@ -1,5 +1,6 @@
-import Banner from '@/components/Home/Banner'
-import ProductsSection from '@/components/Home/ProductsSection'
+import Breadcrumb from '@/components/Breadcrumb'
+import Banner from '@/components/Pages/Home/Banner'
+import ProductsSection from '@/components/Pages/Home/ProductsSection'
 
 import { getProducts } from '@/services/product'
 import { IProduct } from '@/services/product/interfaces'
@@ -31,7 +32,9 @@ export default function Home() {
   }, [offset])
 
   return (
-    <main className='flex w-full flex-col items-center'>
+    <main className='mt-16 flex w-full flex-col items-center'>
+      <Breadcrumb />
+
       <Banner />
       <ProductsSection
         products={products}
