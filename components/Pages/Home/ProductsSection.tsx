@@ -22,7 +22,7 @@ const ProductsSection: React.FC<ProductsSectionProps> = ({
         </h1>
       </div>
 
-      <div className='flex w-full flex-col items-center justify-between gap-4 lg:flex-row lg:flex-wrap'>
+      <div className='flex w-full flex-col items-center gap-8 lg:flex-row lg:flex-wrap'>
         {products &&
           products.map((product) => (
             <Card

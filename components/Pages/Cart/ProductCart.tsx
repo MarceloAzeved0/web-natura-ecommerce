@@ -1,14 +1,26 @@
-import { ProductContextProps } from '@/contexts/order'
+import { OrderProduct } from '@/contexts/order'
+import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/outline'
+import Image from 'next/image'
 
 interface ProductCartProps {
-  product: ProductContextProps
+  product: OrderProduct
+  addProduct: (data: OrderProduct) => void
+  decreaseProduct: (data: OrderProduct) => void
+  removeOrderProduct: (data: OrderProduct) => void
 }
 
-const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
+const ProductCart: React.FC<ProductCartProps> = ({
+  product,
+  addProduct,
+  decreaseProduct,
+  removeOrderProduct,
+}) => {
   return (
-    <article className='flex justify-between border-b-2 p-3'>
-      <img
-        className='w1/5 h-24 rounded-sm'
+    <article className='flex h-32 justify-between border-b-2 p-3'>
+      <Image
+        width={96}
+        height={96}
+        className='rounded-sm'
         src={product.imageURL}
         alt={product.name}
       />
@@ -22,11 +34,31 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
         </p>
       </div>
 
-      <div className='flex w-1/5 flex-col justify-between'>
-        <p>icon</p>
-        <p>
-          decrease <b>{product.quantity}</b> increase
-        </p>
+      <div className='ite flex flex-col items-end justify-between'>
+        <button
+          onClick={() => removeOrderProduct(product)}
+          type='button'
+          aria-label='Remove'
+        >
+          <TrashIcon className='h-6 w-6 cursor-pointer text-red-500' />
+        </button>
+        <div className='flex justify-center gap-4'>
+          <button
+            type='button'
+            onClick={() => decreaseProduct(product)}
+            aria-label='Decrease'
+          >
+            <MinusIcon className='h-6 w-6 cursor-pointer text-red-500' />
+          </button>
+          <b>{product.quantity}</b>
+          <button
+            type='button'
+            onClick={() => addProduct(product)}
+            aria-label='Increase'
+          >
+            <PlusIcon className='h-6 w-6 cursor-pointer text-green-500' />
+          </button>
+        </div>
       </div>
     </article>
   )

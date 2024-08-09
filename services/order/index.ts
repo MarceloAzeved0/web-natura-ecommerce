@@ -1,11 +1,15 @@
 import API from '../base'
 import { IOrder } from './interfaces'
 
-export const getOrCreateOrder = async (params: {
+export const createOrder = async (params: {
   userId: number
+  productIds: {
+    id: number
+    quantity: number
+  }[]
 }): Promise<IOrder> => {
   try {
-    const { data } = await API.post<IOrder>('/order', { params })
+    const { data } = await API.post<IOrder>('/order', { ...params })
 
     return data
   } catch (error) {

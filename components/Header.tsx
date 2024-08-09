@@ -10,14 +10,17 @@ import { OrderContext } from '@/contexts/order'
 
 const Header = () => {
   const [openModal, setOpenModal] = useState<boolean>(false)
-  const { orderProducts, quantityProducts } = useContext(OrderContext)
+  const { orderProducts, cartData } = useContext(OrderContext)
 
   return (
     <header className='fixed top-0 flex w-full justify-center border-b bg-white'>
       <div className='container flex w-full items-center justify-between py-3'>
-        <div className='hidden text-xl font-bold text-gray-800 sm:flex'>
+        <Link
+          href='/'
+          className='hidden text-xl font-bold text-gray-800 sm:flex'
+        >
           <b>Cosméticos&Co</b>
-        </div>
+        </Link>
 
         <div className='relative mx-20 w-full'>
           <input
@@ -35,7 +38,7 @@ const Header = () => {
           >
             {orderProducts.length ? (
               <span className='z-10 -mb-1 -mr-4 h-6 w-6 rounded-xl border bg-orange-500 text-center font-bold text-white'>
-                {quantityProducts}
+                {cartData.quantity}
               </span>
             ) : (
               ''

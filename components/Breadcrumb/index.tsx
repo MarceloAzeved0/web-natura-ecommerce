@@ -11,7 +11,7 @@ const NextBreadcrumb = () => {
 
   return (
     <div className='container'>
-      <ul className='flex w-full flex-row items-center p-4'>
+      <ul className='flex w-full flex-row items-center py-4'>
         <li className={`${pathNames.length === 0 ? 'text-orange-500' : ''}`}>
           <Link href={'/'}>Inicio</Link>
         </li>
