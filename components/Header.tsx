@@ -13,7 +13,7 @@ const Header = () => {
   const { orderProducts, cartData } = useContext(OrderContext)
 
   return (
-    <header className='fixed top-0 flex w-full justify-center border-b bg-white'>
+    <header className='fixed top-0 z-10 flex w-full justify-center border-b bg-white'>
       <div className='container flex w-full items-center justify-between py-3'>
         <Link
           href='/'

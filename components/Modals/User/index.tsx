@@ -86,7 +86,7 @@ const UserModal: React.FC<IUserModal> = ({ open, finishOrder, setClosed }) => {
   return (
     open && (
       <Modal
-        title={`${finishOrder ? 'Adicione os seus dados para finalizar' : 'Informações do usuário'}`}
+        title={`${finishOrder ? 'Checkout: ' : ''} Informações do usuário`}
         body={<UserForm finishOrder={finishOrder} />}
         closeModal={() => setClosed()}
       />

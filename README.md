@@ -1,40 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Natura E-commerce Platform
 
-## Getting Started
+## 1. Visão Geral
 
-First, run the development server:
+Este projeto é uma plataforma de e-commerce inspirada na Natura.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+A plataforma encontra-se disponível em <a href="https://web-natura-ecommerce.vercel.app/">https://web-natura-ecommerce.vercel.app/</a>.
+
+OBS. <b>Hospedagem gratuita que pode pode conter oscilações.</b> Qualquer problema encontrado estou disponivel para contato.
+
+## 2. Estrutura do Projeto
+
+O projeto contém as seguintes pastas principais:
+
+- `pages/`
+- `components/`
+- `contexts/`
+- `layouts/`
+- `services/`
+
+
+## 3. Configuração e Instalação
+
+### Requisitos
+
+- Node.js >= 16.x
+
+### Passos para Instalação
+
+1. Clone o repositório:
+
+   ```sh
+   git clone https://github.com/MarceloAzeved0/web-natura-ecommerce.git
+   cd web-natura-ecommerce
+
+   ```
+
+2. Instale as dependências:
+
+   ```sh
+   yarn install
+   ```
+
+3. Configure as variáveis de ambiente:
+
+- Crie um arquivo .env na raiz do projeto com as seguintes configurações:
+
+```sh
+API_URL="http://localhost:3001"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Inicie o servidor:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```sh
+  yarn dev 
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 4. Considerações finais
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Decisões de tecnologias
 
-## Learn More
+- Tailwind: Para o projeto foi utilizado NextJS, Typescript e Tailwind como tecnologias prinicipais.
+### Melhorias futuras
 
-To learn more about Next.js, take a look at the following resources:
+- Autenticação e Autorização: Implementar autenticação e autorização para restringir o acesso aos endpoints.
+- Adição de interfaces e classes para controlar e padronizar exceptions.
+- Criação de testes e storybook.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 8. Contato
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Se tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Nome: Marcelo Azevedo
+- Email: marcelobernardy@gmail.com

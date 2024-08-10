@@ -20,12 +20,13 @@ const ProductCart: React.FC<ProductCartProps> = ({
       <Image
         width={96}
         height={96}
-        className='rounded-sm'
+        className='mr-4 rounded-sm'
         src={product.imageURL}
         alt={product.name}
       />
       <div className='flex flex-1 flex-col justify-between'>
-        <p>{product.name}</p>
+        <b>{product.name}</b>
+        <p>{product.description}</p>
         <p>
           {product.price.toLocaleString('pt-br', {
             style: 'currency',

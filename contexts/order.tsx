@@ -2,6 +2,7 @@ import { IProduct } from '@/services/product/interfaces'
 import { createContext, useState } from 'react'
 
 import { createOrder } from '@/services/order'
+import { toast } from 'react-toastify'
 export interface OrderProduct extends IProduct {
   quantity: number
 }
@@ -53,6 +54,7 @@ const Order: React.FC<OrderContextProps> = ({ children }) => {
 
     if (index === -1) {
       setOrderProducts((oldItems) => [...oldItems, { ...product, quantity: 1 }])
+      toast.success('Produto adicionado no carrinho!')
       return
     }
 
@@ -63,6 +65,8 @@ const Order: React.FC<OrderContextProps> = ({ children }) => {
       ...orderProducts[index],
       quantity: newQuantity,
     })
+
+    toast.success('Adicionado mais um item!')
 
     setOrderProducts(newOrderProducts)
   }
@@ -93,6 +97,7 @@ const Order: React.FC<OrderContextProps> = ({ children }) => {
       discount: cartData.discount - product.discount,
       total: cartData.total - (product.price - product.discount),
     })
+    toast.success('Removido mais um item!')
   }
 
   const removeOrderProduct = (product: IProduct) => {
@@ -114,21 +119,27 @@ const Order: React.FC<OrderContextProps> = ({ children }) => {
       total:
         cartData.total - (product.price - product.discount) * decreaseQuantity,
     })
+
+    toast.success('Produto removido do carrinho!')
   }
 
   const finishOrder = async (userId: number) => {
-    await createOrder({
-      userId,
-      productIds: orderProducts.map((orderP) => ({
-        id: orderP.id,
-        quantity: orderP.quantity,
-      })),
-    })
+    try {
+      await createOrder({
+        userId,
+        productIds: orderProducts.map((orderP) => ({
+          id: orderP.id,
+          quantity: orderP.quantity,
+        })),
+      })
 
-    setCartData(INITIAL_CART_STATE)
-    setOrderProducts([])
+      setCartData(INITIAL_CART_STATE)
+      setOrderProducts([])
 
-    console.log('Order finished')
+      toast.success('Compra finalizada!')
+    } catch (error) {
+      toast.error('Error ao finalizar as compras!')
+    }
   }
 
   return (

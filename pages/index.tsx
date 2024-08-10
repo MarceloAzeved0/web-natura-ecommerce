@@ -5,6 +5,7 @@ import ProductsSection from '@/components/Pages/Home/ProductsSection'
 import { getProducts } from '@/services/product'
 import { IProduct } from '@/services/product/interfaces'
 import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 
 const INITIAL_ROW_NUMBER = 4
 
@@ -15,12 +16,16 @@ export default function Home() {
   const [total, setTotal] = useState<number>(0)
 
   const manageProducts = async () => {
-    const { products: productsResponse, total } = await getProducts({
-      offset,
-      limit,
-    })
-    setProducts([...products, ...productsResponse])
-    setTotal(total)
+    try {
+      const { products: productsResponse, total } = await getProducts({
+        offset,
+        limit,
+      })
+      setProducts([...products, ...productsResponse])
+      setTotal(total)
+    } catch (error) {
+      toast.error('Error ao listar os produtos!')
+    }
   }
 
   const handleSearch = async () => {

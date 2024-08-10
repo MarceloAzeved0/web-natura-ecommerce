@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import { getOrCreateUser as getOrCreateUserAPI } from '@/services/user'
 import { IUser, IUserParams } from '@/services/user/interfaces'
+import { toast } from 'react-toastify'
 
 export interface UserContextType {
   user: IUser
@@ -26,11 +27,15 @@ const User: React.FC<IUserContext> = ({ children }) => {
   }, [])
 
   const getOrCreateUser = async (params: IUserParams) => {
-    const data = await getOrCreateUserAPI(params)
+    try {
+      const data = await getOrCreateUserAPI(params)
 
-    localStorage.setItem('user', JSON.stringify(data))
+      localStorage.setItem('user', JSON.stringify(data))
 
-    setUser(data)
+      setUser(data)
+    } catch (error) {
+      toast.error('Error ao buscar ou criar usuário!')
+    }
   }
 
   return (

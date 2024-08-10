@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({ product, action }) => {
     : 0
 
   return (
-    <article className='my-4 flex w-full min-w-72 flex-col rounded-xl border p-6 shadow-lg hover:bg-slate-100 lg:w-1/5'>
+    <article className='my-4 flex w-full max-w-80 flex-col rounded-xl border p-6 shadow-lg hover:bg-slate-100 lg:w-1/5'>
       <div className='flex w-full items-center'>
         <Image
           src={product.imageURL}

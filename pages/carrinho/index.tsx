@@ -17,11 +17,11 @@ const Cart: React.FC = () => {
   } = useContext(OrderContext)
 
   return (
-    <main className='w-100 container mt-16 flex flex-col'>
+    <main className='container mt-16 flex w-full flex-col'>
       <Breadcrumb />
       <h1 className='my-4 text-xl font-bold'>Seu carrinho</h1>
-      <section className='w-100 flex min-h-96 gap-4'>
-        <div className='flex w-2/3 flex-1 flex-col rounded-md border-2'>
+      <section className='flex min-h-96 w-full flex-col gap-4 md:flex-row'>
+        <div className='flex w-full flex-1 flex-col rounded-md border-2 md:w-2/3'>
           {orderProducts.length === 0 ? (
             <div className='flex h-full w-full flex-col items-center justify-center gap-4'>
               <p>Nenhum produto no carrinho!</p>
@@ -44,7 +44,7 @@ const Cart: React.FC = () => {
             ))
           )}
         </div>
-        <div className='flex max-h-96 w-1/3 flex-col justify-between rounded-md border-2 p-4'>
+        <div className='flex max-h-96 w-full flex-col justify-between rounded-md border-2 p-4 md:w-1/3'>
           <h2 className='text-xl font-bold'>Sumário</h2>
           <div className='flex flex-col gap-2'>
             <div className='flex justify-between'>
