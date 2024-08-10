@@ -23,7 +23,12 @@ const UserForm = ({
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await getOrCreateUser(data)
 
-    finishOrder && (await finishOrder(user.id))
+    if (finishOrder) {
+      await finishOrder(
+        user.id ||
+          Number(JSON.parse(localStorage.getItem('user') as string).id),
+      )
+    }
   }
 
   return user?.id && !finishOrder ? (

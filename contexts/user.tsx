@@ -30,9 +30,9 @@ const User: React.FC<IUserContext> = ({ children }) => {
     try {
       const data = await getOrCreateUserAPI(params)
 
-      localStorage.setItem('user', JSON.stringify(data))
-
       setUser(data)
+
+      localStorage.setItem('user', JSON.stringify(data))
     } catch (error) {
       toast.error('Error ao buscar ou criar usuário!')
     }
