@@ -5,12 +5,24 @@ import {
 } from '@heroicons/react/outline'
 import Link from 'next/link'
 import UserModal from './Modals/User'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { OrderContext } from '@/contexts/order'
 
+import { useDebounce } from 'use-debounce'
+import { ProductContext } from '@/contexts/product'
+
 const Header = () => {
+  const [headerSearch, setHeaderSearch] = useState('')
+  const [debounceHeaderSearch] = useDebounce(headerSearch, 1000)
+
   const [openModal, setOpenModal] = useState<boolean>(false)
   const { orderProducts, cartData } = useContext(OrderContext)
+
+  const { setSearch } = useContext(ProductContext)
+
+  useEffect(() => {
+    setSearch(debounceHeaderSearch)
+  }, [setSearch, debounceHeaderSearch])
 
   return (
     <header className='fixed top-0 z-10 flex w-full justify-center border-b bg-white'>
@@ -25,6 +37,8 @@ const Header = () => {
         <div className='relative mx-20 w-full'>
           <input
             type='text'
+            value={headerSearch}
+            onChange={(e) => setHeaderSearch(e.target.value)}
             placeholder='O que está buscando hoje?'
             className='w-full rounded-full bg-gray-100 py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500'
           />

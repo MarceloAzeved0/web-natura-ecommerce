@@ -4,13 +4,15 @@ import { useContext } from 'react'
 import { OrderContext } from '@/contexts/order'
 
 interface ProductsSectionProps extends IGetProductsResponse {
-  handleSearch: () => void
+  handleLimit: () => void
+  search: string
 }
 
 const ProductsSection: React.FC<ProductsSectionProps> = ({
   products,
   total,
-  handleSearch,
+  search,
+  handleLimit,
 }) => {
   const { addProduct } = useContext(OrderContext)
 
@@ -33,10 +35,10 @@ const ProductsSection: React.FC<ProductsSectionProps> = ({
           ))}
       </div>
 
-      {total > products.length && (
+      {total > products.length && !search && (
         <button
           type='button'
-          onClick={handleSearch}
+          onClick={handleLimit}
           className='my-4 rounded-full border border-black bg-white px-6 py-3 hover:bg-slate-100'
         >
           Carregar mais
